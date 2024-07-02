@@ -1,0 +1,13 @@
+{
+    "users": [
+      {
+        "email": "natalia@local.com",
+        "passwprd": "123"
+      },
+      {
+        "email": "david@local.com",
+        "password": "123"
+      }
+    ]
+  }
+  
