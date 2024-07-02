@@ -17,15 +17,8 @@ void main() async {
     await DesktopWindow.setWindowSize(const Size(1440, 820));
   }
 
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp();
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  runApp(
+    MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
@@ -33,6 +26,6 @@ class MyApp extends StatelessWidget {
         // Otros ajustes de tema según sea necesario
       ),
       home: const Counter(title: 'Flutter Demo Home Page'),
-    );
-  }
+    ),
+  );
 }
