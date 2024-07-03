@@ -1,1 +1,1 @@
-Aquí se colocarán todos los componentes o widgets que se creen y funcionen de manera general, como botones, campos de entrada, etc.
+Aquí se colocarán todos los componentes o widgets que se creen y funcionen de manera general, como botones, campos de entrada, etc, etc.
