@@ -3,7 +3,7 @@ import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/colors.dart';
-import 'package:flutter_application/features/basic_components_app/basic_components_app.dart';
+import 'package:flutter_application/features/welcome/welcome.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +28,7 @@ void main() async {
       home: const SafeArea(
         child: Scaffold(
           backgroundColor: ThemeColors.surface,
-          body: BasicComponentsApp(),
+          body: WelcomePage(),
         ),
       ),
     ),
