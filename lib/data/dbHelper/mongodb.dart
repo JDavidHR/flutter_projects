@@ -37,4 +37,26 @@ class MongoDatabase {
       return false;
     }
   }
+
+  /// Obtiene a todos los usuarios de la BD.
+  static Future<List<Map<String, dynamic>>> getUsersData() async {
+    final arrData = await userCollection.find().toList();
+    return arrData;
+  }
+
+  /// Función para actualizar datos en la base de datos.
+  static Future<String> updateUser(Users data) async {
+    try {
+      var result = await userCollection.findOne({"_id": data.id});
+      if (result == null) {
+        return "ERROR: Usuario no encontrado";
+      }
+      result['email'] = data.email;
+      result['Password'] = data.password;
+      await userCollection.save(result);
+      return "Usuario actualizado correctamente";
+    } catch (e) {
+      return "ERROR: Se produjo un error al actualizar el usuario: ${e.toString()}";
+    }
+  }
 }

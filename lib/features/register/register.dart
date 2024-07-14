@@ -5,6 +5,7 @@ import 'package:flutter_application/core/components/texfield_widget.dart';
 import 'package:flutter_application/data/dbHelper/mongodb.dart';
 import 'package:flutter_application/features/welcome/welcome.dart';
 import 'package:flutter_application/model/entity/users.dart';
+import 'package:mongo_dart/mongo_dart.dart' as M;
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -216,6 +217,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     /// Recolección de la información ingresada.
     final data = Users(
+      id: M.ObjectId(),
       email: email,
       password: password,
     );
