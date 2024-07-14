@@ -14,6 +14,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  /// Controllers.
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -130,22 +131,51 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
+  /// Botones de [cancelar] y [registrarse].
   _buildActionButton() {
-    return ButtonWidget(
-      text: 'Registrarse',
-      icon: Icons.person_add_outlined,
-      onPressed: () {
-        _register(
-          _emailController.text,
-          _passwordController.text,
-        );
-      },
-      backgroundColor: ThemeColors.secondary,
-      textColor: ThemeColors.onSecondary,
-      iconColor: ThemeColors.onSecondary,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        /// Cancelar.
+        ButtonWidget(
+          text: 'Cancelar',
+          icon: Icons.cancel_outlined,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const WelcomePage(),
+              ),
+            );
+          },
+          backgroundColor: ThemeColors.secondary,
+          textColor: ThemeColors.onSecondary,
+          iconColor: ThemeColors.onSecondary,
+        ),
+        const SizedBox(
+          width: 16,
+          height: 16,
+        ),
+
+        /// Registro.
+        ButtonWidget(
+          text: 'Registrarse',
+          icon: Icons.person_add_outlined,
+          onPressed: () {
+            _register(
+              _emailController.text,
+              _passwordController.text,
+            );
+          },
+          backgroundColor: ThemeColors.secondary,
+          textColor: ThemeColors.onSecondary,
+          iconColor: ThemeColors.onSecondary,
+        ),
+      ],
     );
   }
 
+  /// Valida el correo electrónico.
   bool _validateEmail(String email) {
     if (email.isEmpty) {
       _showDialog("Error", "Por favor ingrese su correo electrónico");
@@ -158,6 +188,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return true;
   }
 
+  /// Valida la contraseña.
   bool _validatePassword(String password) {
     if (password.isEmpty) {
       _showDialog("Error", "Por favor ingrese su contraseña");
@@ -170,19 +201,32 @@ class _RegisterPageState extends State<RegisterPage> {
     return true;
   }
 
+  /// Función para registrar al usuario.
   Future<void> _register(String email, String password) async {
     if (!_validateEmail(email) || !_validatePassword(password)) {
       return;
     }
 
+    // Verificar si el correo electrónico ya existe en la base de datos.
+    bool emailExists = await MongoDatabase.valueExists('email', email);
+    if (emailExists) {
+      _showDialog("Error", "El correo electrónico ya está registrado");
+      return;
+    }
+
+    /// Recolección de la información ingresada.
     final data = Users(
       email: email,
       password: password,
     );
+
+    /// Espera hasta que se inserte el usuario en la BD.
     await MongoDatabase.insertUser(data);
 
+    /// Borrar información ingresada.
     _clearAll();
 
+    /// Mensaje de finalización.
     _showDialog(
       "",
       "Usuario registrado con éxito",
@@ -197,11 +241,13 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
+  /// Borrar la información de los inputs.
   void _clearAll() {
     _emailController.text = "";
     _passwordController.text = "";
   }
 
+  /// Dialogo.
   void _showDialog(String title, String content, [void Function()? onPressed]) {
     showDialog(
       context: context,

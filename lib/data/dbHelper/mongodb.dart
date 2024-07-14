@@ -26,4 +26,15 @@ class MongoDatabase {
       return ("ERROR: Se produjo un error al registrar el usuario: ${e.toString()}");
     }
   }
+
+  /// Función genérica para verificar si un campo específico ya existe en
+  /// la base de datos.
+  static Future<bool> valueExists(String field, String value) async {
+    try {
+      var user = await userCollection.findOne(where.eq(field, value));
+      return user != null;
+    } catch (e) {
+      return false;
+    }
+  }
 }
