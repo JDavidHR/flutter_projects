@@ -3,10 +3,14 @@ import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/colors.dart';
-import 'package:flutter_application/features/basic_components_app/basic_components_app.dart';
+import 'package:flutter_application/data/dbHelper/mongodb.dart';
+import 'package:flutter_application/features/welcome/welcome.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Espera hasta que se conecte con la base de datos.
+  await MongoDatabase.connect();
 
   // Configuración específica para plataformas de escritorio
   if (!kIsWeb && (Platform.isLinux || Platform.isMacOS || Platform.isWindows)) {
@@ -25,10 +29,10 @@ void main() async {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
       ),
-      home: const SafeArea(
-        child: Scaffold(
-          backgroundColor: ThemeColors.surface,
-          body: BasicComponentsApp(),
+      home: const Scaffold(
+        backgroundColor: ThemeColors.surface,
+        body: SafeArea(
+          child: WelcomePage(),
         ),
       ),
     ),
