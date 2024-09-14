@@ -50,7 +50,7 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ThemeColors.primary,
+        color: backgroundColor ?? ThemeColors.primary,
         borderRadius: BorderRadius.circular(borderRadius),
       ),
       padding: contendPadding ?? const EdgeInsets.all(8),

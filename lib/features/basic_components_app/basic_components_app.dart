@@ -55,7 +55,7 @@ class _BasicComponentsAppState extends State<BasicComponentsApp>
               onChanged: (String value) {},
             ),
 
-            /// Boton.
+            /// Botón.
             ButtonWidget(
               text: 'Press Me',
               icon: Icons.touch_app_outlined,

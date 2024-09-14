@@ -1,13 +1,14 @@
 {
-    "users": [
-      {
-        "email": "natalia@local.com",
-        "password": "123"
-      },
-      {
-        "email": "david@local.com",
-        "password": "123"
-      }
-    ]
-  }
-  
+  "users": [
+    {
+      "id": "1",
+      "email": "natalia@local.com",
+      "password": "123456"
+    },
+    {
+      "id": "2",
+      "email": "david@local.com",
+      "password": "123456"
+    }
+  ]
+}
