@@ -59,4 +59,27 @@ class MongoDatabase {
       return "ERROR: Se produjo un error al actualizar el usuario: ${e.toString()}";
     }
   }
+
+  /// Función para autenticar un usuario con email y password.
+  static Future<bool> authenticateUser(
+    String email,
+    String password,
+  ) async {
+    try {
+      // Busca un usuario con el email dado.
+      var user = await userCollection.findOne(where.eq('email', email));
+
+      // Si no se encuentra el usuario, retorna falso.
+      if (user == null) {
+        return false;
+      }
+
+      // Verifica que la contraseña ingresada coincida.
+      return user['password'] == password;
+    } catch (e) {
+      // Maneja errores si ocurren durante la autenticación.
+      log("Error en autenticación: ${e.toString()}");
+      return false;
+    }
+  }
 }

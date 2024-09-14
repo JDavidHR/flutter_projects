@@ -23,7 +23,7 @@ void main() async {
 
   runApp(
     MaterialApp(
-      title: 'Flutter Demo',
+      title: 'CRUD básico con mongo DB',
       color: Colors.white,
       theme: ThemeData(
         useMaterial3: true,

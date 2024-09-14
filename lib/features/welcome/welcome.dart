@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/colors.dart';
 import 'package:flutter_application/core/components/button_widget.dart';
+import 'package:flutter_application/features/login/login.dart';
 import 'package:flutter_application/features/register/register.dart';
 
 import 'package:flutter_application/features/test_files_mongo_db/show_and_update_data.dart';
@@ -64,7 +65,14 @@ class _WelcomePageState extends State<WelcomePage> {
         ButtonWidget(
           text: 'Iniciar Sesión',
           icon: Icons.login_outlined,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Login(),
+              ),
+            );
+          },
           backgroundColor: ThemeColors.secondary,
           textColor: ThemeColors.onSecondary,
           iconColor: ThemeColors.onSecondary,

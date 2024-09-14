@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/colors.dart';
+import 'package:flutter_application/core/components/button_widget.dart';
 import 'package:flutter_application/core/components/card_widget.dart';
 import 'package:flutter_application/core/components/texfield_widget.dart';
 import 'package:flutter_application/data/dbHelper/mongodb.dart';
+import 'package:flutter_application/features/welcome/welcome.dart';
 
 import 'package:flutter_application/model/entity/users.dart';
 import 'package:mongo_dart/mongo_dart.dart' as M;
@@ -83,6 +86,23 @@ class _UpdateDataState extends State<UpdateData> {
                               return displayCard(users[index]);
                             },
                           ),
+                        ),
+                        const SizedBox(height: 16),
+                        ButtonWidget(
+                          text: 'Volver',
+                          icon: Icons.arrow_back_rounded,
+                          onPressed: () {
+                            // Redirigir a la página de welcome
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const WelcomePage(),
+                              ),
+                            );
+                          },
+                          backgroundColor: ThemeColors.secondary,
+                          textColor: ThemeColors.onSecondary,
+                          iconColor: ThemeColors.onSecondary,
                         ),
                       ],
                     ),
