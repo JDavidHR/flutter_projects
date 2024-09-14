@@ -44,3 +44,7 @@ Este proyecto es puramente educativo y de práctica. No contiene información se
 
 Para cualquier pregunta o sugerencia relacionada con este proyecto, por favor contacta al propietario del repositorio.
 
+![2](https://github.com/user-attachments/assets/801daf04-2a05-422b-82b6-a81a713fe584)
+![3](https://github.com/user-attachments/assets/ed767703-2473-4c44-8904-a4880dc8f37b)
+![4](https://github.com/user-attachments/assets/306322cd-0b80-4db4-bf3e-5e76ae914653)
+![1](https://github.com/user-attachments/assets/e85b4151-531e-4121-bca6-f8b0fd1a0c44)
